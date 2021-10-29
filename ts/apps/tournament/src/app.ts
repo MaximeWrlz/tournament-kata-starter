@@ -12,4 +12,4 @@ app.get('/api', (req, res) => {
 
 app.post('/api/tournaments', postTournament);
 app.get('/api/tournaments/:id', getTournament);
-app.post('/api/tournaments/{tournamentId}/participants', addParticipant);
+app.post('/api/tournaments/:id/participants', addParticipant);
