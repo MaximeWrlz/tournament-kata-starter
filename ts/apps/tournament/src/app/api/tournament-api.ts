@@ -51,7 +51,6 @@ export const addParticipant = (req: Request, res: Response) => {
     res.status(404).send("❌ Le tournoi n'existe pas ❌");
   }
   tournament.participants = [...tournament.participants, participant];
-  const result = tournamentRepository.saveTournament(tournament);
 
   res.status(201);
   res.send({ id: participant.id });
