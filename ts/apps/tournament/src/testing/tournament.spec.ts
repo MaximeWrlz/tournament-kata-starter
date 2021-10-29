@@ -1,6 +1,6 @@
 import { app } from '../app';
 import * as request from 'supertest';
-import { Participant, Tournament, TournamentPhaseType } from '../app/api/api-model';
+import { Participant, Tournament } from '../app/api/api-model'; //import TournamentPhaseType later
 
 const exampleTournament = {
   name: 'Unreal',
@@ -42,8 +42,8 @@ describe('/tournament endpoint', () => {
 
 
     it('should add a participant to a tournament', async () => {
-     const { body: tournament } = await request(app).post('/api/tournaments').send(exampleTournament)
-     await request(app).post(`/api/tournaments/${tournament.id}/participants`).send(exampleParticipant).expect(201);
+      const { body: tournament } = await request(app).post('/api/tournaments').send(exampleTournament)
+      await request(app).post(`/api/tournaments/${tournament.id}/participants`).send(exampleParticipant).expect(201);
     });
     
   });
