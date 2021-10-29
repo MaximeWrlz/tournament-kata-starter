@@ -32,9 +32,19 @@ describe('/tournament endpoint', () => {
     });
 
     it('should not return the correct name & elo', async () => {
-      const { body } = await request(app).post('/api/tournaments').send(exampleTournament).expect(201);
+      const { body } = await request(app).post('/api/tournaments').send(exampleTournament)
 
-      await request(app).post(`/api/tournaments/${body.id}/participants`).send(body.id, exampleParticipant).expect(400);
+      await request(app).post(`/api/tournaments/${body.id}/participants`).send({}).expect(400);
+      await request(app).post(`/api/tournaments/${body.id}/participants`).send({name: ''}).expect(400);
+      await request(app).post(`/api/tournaments/${body.id}/participants`).send({elo: '1'}).expect(400);
+      await request(app).post(`/api/tournaments/${body.id}/participants`).send({name: exampleParticipant.name, elo: '1'}).expect(400);
     });
+
+
+    it('should add a participant to a tournament', async () => {
+     const { body: tournament } = await request(app).post('/api/tournaments').send(exampleTournament)
+     await request(app).post(`/api/tournaments/${tournament.id}/participants`).send(exampleParticipant).expect(201);
+    });
+    
   });
 });
