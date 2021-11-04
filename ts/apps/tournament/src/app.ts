@@ -16,7 +16,7 @@ app.get('/api', (req, res) => {
 
 app.get('/tournament', (req, res) => {
 
-  TournamentSchema.find({}, function (err, tournaments) {
+  TournamentSchema.find({}, function (err: unknown, tournaments: { name: unknown; }) {
     if (err) return console.error(err);
     res.send(tournaments.name)
   })
