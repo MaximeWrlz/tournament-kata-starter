@@ -1,8 +1,8 @@
 import * as express from 'express';
-import { getTournament, postTournament, addParticipant } from './app/api/tournament-api';
+import { getTournament, postTournament, addParticipant } from './app/infra/api/tournament-api';
 import * as bodyParser from 'body-parser';
-import { myDB } from './app/api/database';
-import TournamentSchema from "./app/model/tournament"
+import { myDB } from './app/infra/storage/database';
+import TournamentSchema from "./app/domain/model/tournament"
 
 myDB.initDB();
 

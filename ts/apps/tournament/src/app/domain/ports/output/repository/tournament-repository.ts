@@ -1,4 +1,4 @@
-import { Tournament } from '../api/api-model';
+import { Tournament } from '../../../../infra/api/api-model';
 
 export class TournamentRepository {
   private tournaments = new Map<string, Tournament>();

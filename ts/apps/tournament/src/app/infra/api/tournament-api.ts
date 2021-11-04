@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { TournamentRepository } from '../repository/tournament-repository';
+import { TournamentRepository } from '../../domain/ports/output/repository/tournament-repository';
 import { TournamentToAdd } from './api-model';
 import { Participant } from './api-model';
 import { v4 as uuidv4 } from 'uuid';
